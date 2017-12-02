@@ -6,7 +6,7 @@ package cz.unicorn.tga.tractor.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import lombok.Data;
+import lombok.*;
 
 /**
  * @author DZCJS9F
@@ -14,12 +14,16 @@ import lombok.Data;
  */
 
 @Data
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarNewForm {
 
 	private String type;
 	private String vin;
 	private BigDecimal price;
-
-	private Date testDatum;
+	private Date dateOfAcquisition;
+	private Date dateOfLastTechnicalCheck;
 
 }

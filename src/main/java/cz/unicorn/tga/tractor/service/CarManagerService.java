@@ -5,6 +5,7 @@ package cz.unicorn.tga.tractor.service;
 
 import java.util.List;
 
+import cz.unicorn.tga.tractor.entity.Car;
 import cz.unicorn.tga.tractor.model.CarDTO;
 import cz.unicorn.tga.tractor.model.CarFilter;
 import cz.unicorn.tga.tractor.model.CarNewForm;
@@ -15,10 +16,14 @@ import cz.unicorn.tga.tractor.model.CarNewForm;
  */
 public interface CarManagerService {
 
-	void createNewCar(CarNewForm carNewForm);
+ 	void createNewCar(CarNewForm carNewForm);
 
 	List<CarDTO> getAllCars();
 
 	List<CarDTO> findCarsByFilter(CarFilter filter);
+
+	CarDTO getCarById(Long carId);
+
+
 
 }

@@ -11,11 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cz.unicorn.tga.tractor.model.CarDTO;
 import cz.unicorn.tga.tractor.model.CarFilter;
@@ -35,7 +31,12 @@ public class CarListController {
 
 	@Autowired
 	private CarManagerService carService;
+	private int carId;
 
+	/**
+	 * Get All Cars in DB
+	 * @return JSON with all cars
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public CarDTO[] getAllCars() {
 		final List<CarDTO> cars = carService.getAllCars();
@@ -43,8 +44,19 @@ public class CarListController {
 		return cars.toArray(new CarDTO[cars.size()]);
 	}
 
-	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	/**
+	 * Find Car By ID
+	 * @param carId
+	 * @return JSON with one car
+	 */
+	@RequestMapping(value = "/find-car/{carId}", method = RequestMethod.GET)
+	public CarDTO getCarById(@PathVariable("carId") Long carId) {
 
+		return carService.getCarById(carId);
+	}
+
+
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
 	public CarDTO[] findByFilter(final CarFilter carFilter) {
 
 		// final CarFilter filter = new CarFilter(id, type, vin, state, priceFrom, priceTo, acquiredFrom, acquiredTo,
@@ -54,10 +66,13 @@ public class CarListController {
 		return result.toArray(new CarDTO[result.size()]);
 	}
 
+
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {
 		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
+
+
 
 }

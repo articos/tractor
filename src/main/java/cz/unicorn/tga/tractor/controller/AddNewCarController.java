@@ -24,17 +24,16 @@ public class AddNewCarController {
 	@Autowired
 	private MessageSource messageSource;
 
-	/*
+	/**
 	 * Provede ulozeni vozidla URI: /cars/new Method: POST
+	 * @param carNewForm
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public void addNewCar(@RequestBody final CarNewForm carNewForm) {
 
-		// TODO Validate model
 		carManagerService.createNewCar(carNewForm);
 
 		return;
-
 	}
 
 	/*

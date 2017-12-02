@@ -22,9 +22,14 @@ public class ClientManagerServiceBean implements ClientManagerService {
         this.dtoMapper = dtoMapper;
     }
 
-
     @Override
     public List<ClientDTO> getAllClients() {
         return dtoMapper.convertClients(clientDAO.findAll());
     }
+
+    @Override
+    public void deleteClientById(Long clientId) {
+        clientDAO.delete(clientId);
+    }
+
 }

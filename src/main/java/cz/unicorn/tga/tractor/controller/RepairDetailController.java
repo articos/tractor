@@ -18,6 +18,11 @@ public class RepairDetailController {
     @Autowired
     private RepairService repairService;
 
+    /**
+     * find Detail of Repair By Id of repair
+     * @param repairDetailId
+     * @return JSON with one RepairDetail
+     */
     @RequestMapping(value ="/{repairId}", method = RequestMethod.GET)
     public RepairDetail getRepairDetail(@PathVariable("repairId") Long repairDetailId) {
         return repairService.getRepairDetailById(repairDetailId);

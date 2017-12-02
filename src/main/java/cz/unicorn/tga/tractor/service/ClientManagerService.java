@@ -7,5 +7,15 @@ import java.util.List;
 
 public interface ClientManagerService {
 
+    /**
+     * Get All Clients from ClientDAO
+     * @return List Of ClientDTO
+     */
     List<ClientDTO> getAllClients();
+
+    /**
+     * Delete Client by provided ID
+     * @param clientId
+     */
+    void deleteClientById(Long clientId);
 }

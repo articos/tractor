@@ -15,10 +15,7 @@ public interface RepairMapper {
     @Mapping(target = "price", source = "repair.price")
     RepairDetail toRepairDetail(final Repair repair);
 
-    //TODO pak smazat
-    //TODO napis si testy kundo
+    //TODO musim napsat testy moje mapovani listu
 //    List<RepairDetail> toRepairs(List<Repair> repair);
-
-//    @Mapping(target = "displayName", expression = "java(response.getFirstName() + \" \" + response.getSurname())")
 
 }
