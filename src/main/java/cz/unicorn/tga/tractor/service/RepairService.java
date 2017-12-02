@@ -28,5 +28,4 @@ public class RepairService {
 
         return repairMapper.toRepairDetail(repair);
     }
-
 }

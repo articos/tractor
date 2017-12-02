@@ -1,12 +1,10 @@
-/**
- * 
- */
 package cz.unicorn.tga.tractor.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import cz.unicorn.tga.tractor.model.CarNewForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -19,22 +17,30 @@ import cz.unicorn.tga.tractor.service.CarManagerService;
 import cz.unicorn.tga.tractor.web.CommonConstants;
 
 /**
- * @author DZCJS9F
+ * Controller
+ *
+ * @author John B.
  *
  */
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = CarListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CarListController {
+	static final String BASE_URL = CommonConstants.SLASH + "cars";
 
-	public static final String BASE_URL = CommonConstants.SLASH + "cars";
-
-	@Autowired
-	private CarManagerService carService;
-	private int carId;
+	private final CarManagerService carService;
 
 	/**
-	 * Get All Cars in DB
+	 * Constructor.
+	 */
+	@Autowired
+	public CarListController(CarManagerService carService) {
+		this.carService = carService;
+	}
+
+	/**
+	 * Get all Cars from DB.
+	 *
 	 * @return JSON with all cars
 	 */
 	@RequestMapping(method = RequestMethod.GET)
@@ -45,19 +51,24 @@ public class CarListController {
 	}
 
 	/**
-	 * Find Car By ID
+	 * Find car by ID.
+	 *
 	 * @param carId
+	 *
 	 * @return JSON with one car
 	 */
 	@RequestMapping(value = "/find-car/{carId}", method = RequestMethod.GET)
 	public CarDTO getCarById(@PathVariable("carId") Long carId) {
-
 		return carService.getCarById(carId);
 	}
 
+	@RequestMapping(value = "update", method = RequestMethod.PUT)
+	public void updateCarById(@RequestBody CarNewForm carNewForm) {
+		 //TODO UPDATE Car implement
+	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
-	public CarDTO[] findByFilter(final CarFilter carFilter) {
+	public CarDTO[] findByFilter( CarFilter carFilter) {
 
 		// final CarFilter filter = new CarFilter(id, type, vin, state, priceFrom, priceTo, acquiredFrom, acquiredTo,
 		// lastTechnicalCheckFrom, lastTechnicalCheckTo);
@@ -66,13 +77,9 @@ public class CarListController {
 		return result.toArray(new CarDTO[result.size()]);
 	}
 
-
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {
 		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
-
-
-
 }

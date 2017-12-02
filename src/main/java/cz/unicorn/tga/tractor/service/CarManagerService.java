@@ -24,6 +24,6 @@ public interface CarManagerService {
 
 	CarDTO getCarById(Long carId);
 
-
+	void updateCarById(Long carId);
 
 }

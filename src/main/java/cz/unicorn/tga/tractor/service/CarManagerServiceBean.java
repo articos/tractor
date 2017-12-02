@@ -60,8 +60,6 @@ public class CarManagerServiceBean implements CarManagerService {
      */
     private void setFieldFromDto(final CarNewForm carNewForm, final Car car) throws ParseException {
 
-        Date date = new Date();
-
 
         //TODO dobra validace a mozna nezapisuje setDateOfLastTechnicalCheck
         if ((carNewForm.getPrice() == null)){
@@ -116,6 +114,13 @@ public class CarManagerServiceBean implements CarManagerService {
     public CarDTO getCarById(Long carId) {
 
         return dtoMapper.convert(carDAO.findOne(carId));
+    }
+
+
+    @Override
+    public void updateCarById(Long carId) {
+        //TODO Car update implementation
+
     }
 
 
