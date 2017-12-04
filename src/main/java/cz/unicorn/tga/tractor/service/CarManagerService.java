@@ -26,4 +26,5 @@ public interface CarManagerService {
 
 	List<CarDTO> getAllCarsForStk();
 
+
 }

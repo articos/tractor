@@ -63,7 +63,7 @@ public class CarListController {
 	}
 
 	/**
-	 * Updating Slected Car by ID
+	 * Update Selected Car by ID
 	 *
 	 * @param carUpdate
 	 * @return
@@ -83,6 +83,10 @@ public class CarListController {
 		return result.toArray(new CarDTO[result.size()]);
 	}
 
+	/**
+	 * Search for cars, where STK is in two months needed or doesnt have STK
+	 * and without CarState NEW nad DISABLED
+	 */
 	@RequestMapping(value = "/cars-for-stk", method = RequestMethod.GET)
 	public CarDTO[] getAllCarsForSTk() {
 		final List<CarDTO> cars = carService.getAllCarsForStk();
