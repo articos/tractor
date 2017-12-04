@@ -5,6 +5,8 @@ import cz.unicorn.tga.tractor.model.repair.RepairDetail;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 
 @Mapper
 public interface RepairMapper {
@@ -16,6 +18,6 @@ public interface RepairMapper {
     RepairDetail toRepairDetail(final Repair repair);
 
     //TODO musim napsat testy moje mapovani listu
-//    List<RepairDetail> toRepairs(List<Repair> repair);
+     List<RepairDetail> convertToListOfRepairDetail (List<Repair> repair);
 
 }

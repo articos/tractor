@@ -3,22 +3,26 @@
  */
 package cz.unicorn.tga.tractor.service;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import cz.unicorn.tga.tractor.dao.CarDAO;
+import cz.unicorn.tga.tractor.dao.CarFilterDAO;
+import cz.unicorn.tga.tractor.entity.Car;
+import cz.unicorn.tga.tractor.model.CarDTO;
+import cz.unicorn.tga.tractor.model.CarFilter;
+import cz.unicorn.tga.tractor.model.CarNewForm;
+import cz.unicorn.tga.tractor.model.CarUpdate;
+import cz.unicorn.tga.tractor.model.enumeration.CarState;
+import cz.unicorn.tga.tractor.model.enumeration.CarsType;
+import cz.unicorn.tga.tractor.util.CoreDateUtil;
+import cz.unicorn.tga.tractor.util.DTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cz.unicorn.tga.tractor.dao.*;
-import cz.unicorn.tga.tractor.entity.Car;
-import cz.unicorn.tga.tractor.model.*;
-import cz.unicorn.tga.tractor.model.enumeration.*;
-import cz.unicorn.tga.tractor.util.*;
+import javax.xml.crypto.Data;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author DZCJS9F
@@ -54,6 +58,9 @@ public class CarManagerServiceBean implements CarManagerService {
     }
 
     /**
+     * Check CarNewForm for null values, if not set values to Car
+     * CarState is always NEW.
+     * DateOfLastTechnicalCheck and setDateOfAcquisition are set to today.
      * @param carNewForm
      * @param car
      * @throws ParseException
@@ -61,19 +68,26 @@ public class CarManagerServiceBean implements CarManagerService {
     private void setFieldFromDto(final CarNewForm carNewForm, final Car car) throws ParseException {
 
 
-        //TODO dobra validace a mozna nezapisuje setDateOfLastTechnicalCheck
-        if ((carNewForm.getPrice() == null)){
-            return;
-        }
+        //TODO null validace + null validation
 
-        car.setPrice(carNewForm.getPrice());
+        Date date = new Date();
+        if ( (carNewForm.getPrice() == null) || (carNewForm.getVin()==null) ){
+            return;
+        } else {
+            car.setType(CarsType.valueOf(carNewForm.getType()));
+            car.setVin(carNewForm.getVin());
+        }
         car.setType(CarsType.valueOf(carNewForm.getType()));
-        car.setVin(carNewForm.getVin());
-        car.setDateOfAcquisition(new SimpleDateFormat("yyyy.MM.dd").parse(carNewForm.getDateOfAcquisition().toString()));
-        car.setDateOfLastTechnicalCheck(new SimpleDateFormat("yyyy.MM.dd").parse(carNewForm.getDateOfAcquisition().toString()));
+        car.setDateOfLastTechnicalCheck(date);
+        car.setDateOfAcquisition(date);
+        if(carNewForm==null) {
+            car.setDateOfLastTechnicalCheck(date);
+        }
+        car.setCarState(CarState.NEW);
     }
 
     /**
+     *
      * @param car
      */
     private void save(final Car car) {
@@ -118,9 +132,15 @@ public class CarManagerServiceBean implements CarManagerService {
 
 
     @Override
-    public void updateCarById(Long carId) {
-        //TODO Car update implementation
+    public CarDTO updateCarById(CarUpdate carUpdate) {
+        Car carFromDB = carDAO.findOne(carUpdate.getId());
 
+        dtoMapper.setValueFromForm(carUpdate, carFromDB);
+
+
+        //TODO mapper na CarDTO z CAR, muze se dodelat z metody setfield
+        Car save = carDAO.save(carFromDB);
+        return null;
     }
 
 

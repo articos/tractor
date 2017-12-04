@@ -15,6 +15,9 @@ import lombok.*;
  */
 @Data
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarDTO implements Serializable {
 
 	private Long id;

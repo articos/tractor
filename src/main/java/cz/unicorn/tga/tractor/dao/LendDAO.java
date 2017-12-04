@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LendDao extends JpaRepository<Lend, Long> {
+public interface LendDAO extends JpaRepository<Lend, Long> {
 
 
 }

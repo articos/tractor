@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -26,5 +28,10 @@ public class RepairDetailController {
     @RequestMapping(value ="/{repairId}", method = RequestMethod.GET)
     public RepairDetail getRepairDetail(@PathVariable("repairId") Long repairDetailId) {
         return repairService.getRepairDetailById(repairDetailId);
+    }
+
+    @RequestMapping(value = "/find-repairs/{carId}",method = RequestMethod.GET)
+    public List<RepairDetail> getRepairDetailByCarId(@PathVariable("carId") Long carId) {
+        return repairService.getRepairDetailByCarId(carId);
     }
 }

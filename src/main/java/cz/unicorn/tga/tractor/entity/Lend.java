@@ -41,6 +41,7 @@ public class Lend {
     @ManyToOne
     @JoinColumn(name = "CAR", referencedColumnName = "Id")
     private Car car;
+
     @ManyToOne
     @JoinColumn(name = "car_client", referencedColumnName = "Id")
     private Client client;

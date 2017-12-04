@@ -30,7 +30,7 @@ public class ClientListController {
     }
 
 
-    /* TODO MAZAT KLIENTA CONSTRAINT PROBLEM */
+    /* TODO MAZAT KLIENTA CONSTRAINT PROBLEM
     /*
     @RequestMapping(value = "/client-delete/{clientId}", method = RequestMethod.DELETE)
     public void deleteCarById(@PathVariable("clientId") Long clientId) {

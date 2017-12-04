@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import cz.unicorn.tga.tractor.model.CarNewForm;
+import cz.unicorn.tga.tractor.model.CarUpdate;
+import cz.unicorn.tga.tractor.model.repair.RepairDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -38,6 +40,7 @@ public class CarListController {
 		this.carService = carService;
 	}
 
+
 	/**
 	 * Get all Cars from DB.
 	 *
@@ -62,9 +65,9 @@ public class CarListController {
 		return carService.getCarById(carId);
 	}
 
-	@RequestMapping(value = "update", method = RequestMethod.PUT)
-	public void updateCarById(@RequestBody CarNewForm carNewForm) {
-		 //TODO UPDATE Car implement
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public CarDTO updateCarById(@RequestBody CarUpdate carUpdate) {
+		 return carService.updateCarById(carUpdate);
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
