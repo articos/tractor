@@ -1,8 +1,7 @@
 package cz.unicorn.tga.tractor.controller;
 
 
-import cz.unicorn.tga.tractor.model.ClientDTO;
-import cz.unicorn.tga.tractor.service.CarManagerService;
+import cz.unicorn.tga.tractor.model.dto.ClientDTO;
 import cz.unicorn.tga.tractor.service.ClientManagerService;
 import cz.unicorn.tga.tractor.web.CommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cz.unicorn.tga.tractor.model;
+package cz.unicorn.tga.tractor.model.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;

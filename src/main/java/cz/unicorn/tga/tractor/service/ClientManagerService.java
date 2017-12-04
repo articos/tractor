@@ -1,7 +1,6 @@
 package cz.unicorn.tga.tractor.service;
 
-import cz.unicorn.tga.tractor.model.CarDTO;
-import cz.unicorn.tga.tractor.model.ClientDTO;
+import cz.unicorn.tga.tractor.model.dto.ClientDTO;
 
 import java.util.List;
 

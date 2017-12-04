@@ -6,21 +6,19 @@ package cz.unicorn.tga.tractor.service;
 import cz.unicorn.tga.tractor.dao.CarDAO;
 import cz.unicorn.tga.tractor.dao.CarFilterDAO;
 import cz.unicorn.tga.tractor.entity.Car;
-import cz.unicorn.tga.tractor.model.CarDTO;
-import cz.unicorn.tga.tractor.model.CarFilter;
-import cz.unicorn.tga.tractor.model.CarNewForm;
-import cz.unicorn.tga.tractor.model.CarUpdate;
+import cz.unicorn.tga.tractor.model.dto.CarDTO;
+import cz.unicorn.tga.tractor.model.dto.CarFilter;
+import cz.unicorn.tga.tractor.model.dto.CarNewForm;
+import cz.unicorn.tga.tractor.model.dto.CarUpdate;
 import cz.unicorn.tga.tractor.model.enumeration.CarState;
 import cz.unicorn.tga.tractor.model.enumeration.CarsType;
 import cz.unicorn.tga.tractor.util.CoreDateUtil;
-import cz.unicorn.tga.tractor.util.DTOMapper;
+import cz.unicorn.tga.tractor.mapper.DTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.xml.crypto.Data;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 

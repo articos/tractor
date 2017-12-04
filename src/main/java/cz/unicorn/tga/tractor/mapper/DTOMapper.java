@@ -1,14 +1,14 @@
-package cz.unicorn.tga.tractor.util;
+package cz.unicorn.tga.tractor.mapper;
 
 import java.util.List;
 
 import cz.unicorn.tga.tractor.entity.Client;
-import cz.unicorn.tga.tractor.model.CarUpdate;
-import cz.unicorn.tga.tractor.model.ClientDTO;
+import cz.unicorn.tga.tractor.model.dto.CarUpdate;
+import cz.unicorn.tga.tractor.model.dto.ClientDTO;
 import org.mapstruct.Mapper;
 
 import cz.unicorn.tga.tractor.entity.Car;
-import cz.unicorn.tga.tractor.model.CarDTO;
+import cz.unicorn.tga.tractor.model.dto.CarDTO;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 

@@ -1,8 +1,8 @@
 package cz.unicorn.tga.tractor.service;
 
 import cz.unicorn.tga.tractor.dao.ClientDAO;
-import cz.unicorn.tga.tractor.model.ClientDTO;
-import cz.unicorn.tga.tractor.util.DTOMapper;
+import cz.unicorn.tga.tractor.model.dto.ClientDTO;
+import cz.unicorn.tga.tractor.mapper.DTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -6,7 +6,7 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import cz.unicorn.tga.tractor.entity.Car;
-import cz.unicorn.tga.tractor.model.CarFilter;
+import cz.unicorn.tga.tractor.model.dto.CarFilter;
 import cz.unicorn.tga.tractor.util.QueryBuilder;
 
 @Repository

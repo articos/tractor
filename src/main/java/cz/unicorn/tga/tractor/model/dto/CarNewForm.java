@@ -1,31 +1,29 @@
 /**
  * 
  */
-package cz.unicorn.tga.tractor.model;
+package cz.unicorn.tga.tractor.model.dto;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 import lombok.*;
 
 /**
- * @author User
+ * @author DZCJS9F
  *
  */
+
 @Data
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarDTO implements Serializable {
+public class CarNewForm {
 
-	private Long id;
 	private String type;
 	private String vin;
-	private String carState;
+	private BigDecimal price;
 	private Date dateOfAcquisition;
 	private Date dateOfLastTechnicalCheck;
-	private BigDecimal price;
 
 }

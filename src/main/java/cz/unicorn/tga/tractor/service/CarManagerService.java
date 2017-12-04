@@ -3,10 +3,10 @@ package cz.unicorn.tga.tractor.service;
 
 import java.util.List;
 
-import cz.unicorn.tga.tractor.model.CarDTO;
-import cz.unicorn.tga.tractor.model.CarFilter;
-import cz.unicorn.tga.tractor.model.CarNewForm;
-import cz.unicorn.tga.tractor.model.CarUpdate;
+import cz.unicorn.tga.tractor.model.dto.CarDTO;
+import cz.unicorn.tga.tractor.model.dto.CarFilter;
+import cz.unicorn.tga.tractor.model.dto.CarNewForm;
+import cz.unicorn.tga.tractor.model.dto.CarUpdate;
 
 /**
  * @author DZCJS9F

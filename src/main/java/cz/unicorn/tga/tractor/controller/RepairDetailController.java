@@ -1,6 +1,6 @@
 package cz.unicorn.tga.tractor.controller;
 
-import cz.unicorn.tga.tractor.model.repair.RepairDetail;
+import cz.unicorn.tga.tractor.model.dto.RepairDetail;
 import cz.unicorn.tga.tractor.service.RepairService;
 import cz.unicorn.tga.tractor.web.CommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;

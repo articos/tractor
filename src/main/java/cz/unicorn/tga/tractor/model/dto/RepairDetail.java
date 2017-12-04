@@ -1,4 +1,4 @@
-package cz.unicorn.tga.tractor.model.repair;
+package cz.unicorn.tga.tractor.model.dto;
 
 import lombok.*;
 

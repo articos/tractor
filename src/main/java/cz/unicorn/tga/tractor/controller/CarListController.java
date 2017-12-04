@@ -4,17 +4,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import cz.unicorn.tga.tractor.model.CarNewForm;
-import cz.unicorn.tga.tractor.model.CarUpdate;
-import cz.unicorn.tga.tractor.model.repair.RepairDetail;
+import cz.unicorn.tga.tractor.model.dto.CarUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import cz.unicorn.tga.tractor.model.CarDTO;
-import cz.unicorn.tga.tractor.model.CarFilter;
+import cz.unicorn.tga.tractor.model.dto.CarDTO;
+import cz.unicorn.tga.tractor.model.dto.CarFilter;
 import cz.unicorn.tga.tractor.service.CarManagerService;
 import cz.unicorn.tga.tractor.web.CommonConstants;
 

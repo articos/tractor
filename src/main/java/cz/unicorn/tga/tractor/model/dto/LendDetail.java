@@ -1,4 +1,4 @@
-package cz.unicorn.tga.tractor.model.lend;
+package cz.unicorn.tga.tractor.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

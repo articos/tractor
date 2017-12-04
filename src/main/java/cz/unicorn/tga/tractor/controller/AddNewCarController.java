@@ -6,7 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import cz.unicorn.tga.tractor.model.CarNewForm;
+import cz.unicorn.tga.tractor.model.dto.CarNewForm;
 import cz.unicorn.tga.tractor.service.CarManagerService;
 import cz.unicorn.tga.tractor.web.*;
 

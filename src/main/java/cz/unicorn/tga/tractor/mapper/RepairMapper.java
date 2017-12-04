@@ -1,7 +1,7 @@
-package cz.unicorn.tga.tractor.service;
+package cz.unicorn.tga.tractor.mapper;
 
 import cz.unicorn.tga.tractor.entity.Repair;
-import cz.unicorn.tga.tractor.model.repair.RepairDetail;
+import cz.unicorn.tga.tractor.model.dto.RepairDetail;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

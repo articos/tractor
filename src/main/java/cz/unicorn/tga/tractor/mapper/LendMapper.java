@@ -1,7 +1,7 @@
-package cz.unicorn.tga.tractor.service;
+package cz.unicorn.tga.tractor.mapper;
 
 import cz.unicorn.tga.tractor.entity.Lend;
-import cz.unicorn.tga.tractor.model.lend.LendDetail;
+import cz.unicorn.tga.tractor.model.dto.LendDetail;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
