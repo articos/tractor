@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -139,6 +141,26 @@ public class CarManagerServiceBean implements CarManagerService {
         //TODO mapper na CarDTO z CAR, muze se dodelat z metody setfield
         Car save = carDAO.save(carFromDB);
         return null;
+    }
+
+    @Override
+    public List<CarDTO> getAllCarsForStk() {
+        List<CarDTO> cars = dtoMapper.convert(carDAO.findAll());
+        List<CarDTO> results = new ArrayList<>();
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -10);
+        Date todayMinusTwoMonths = cal.getTime();
+
+
+        for (CarDTO car : cars){
+            if ( (car.getDateOfLastTechnicalCheck().before(todayMinusTwoMonths)) &&
+                    (!car.getCarState().equals(CarState.DISABLED.toString())) &&
+                    (!(car.getCarState().equals(CarState.NEW.toString())))  ){
+                results.add(car);
+            }
+        }
+        return results;
     }
 
 

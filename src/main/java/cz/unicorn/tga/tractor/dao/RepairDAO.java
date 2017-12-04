@@ -9,4 +9,7 @@ import java.util.List;
 public interface RepairDAO extends JpaRepository<Repair,Long> {
 
     List<Repair> findAllByCar(Car car);
+
+//    @Query("select u from Repair u where u.car.id = :carId")
+//    List<Repair> findAllByCarId(@Param("carId") Long carId);
 }

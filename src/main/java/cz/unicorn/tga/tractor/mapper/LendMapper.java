@@ -5,6 +5,8 @@ import cz.unicorn.tga.tractor.model.dto.LendDetail;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper
 public interface LendMapper {
 
@@ -13,4 +15,6 @@ public interface LendMapper {
     @Mapping(target = "vin", source = "car.vin")
     @Mapping(target = "carId", source = "car.id")
     LendDetail toLendDetail(final Lend lend);
+
+    List<LendDetail> toListOfLandDetail(final List<Lend> lend);
 }

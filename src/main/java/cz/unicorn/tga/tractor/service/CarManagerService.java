@@ -24,4 +24,6 @@ public interface CarManagerService {
 
 	CarDTO updateCarById(CarUpdate carUpdate);
 
+	List<CarDTO> getAllCarsForStk();
+
 }

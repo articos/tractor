@@ -8,6 +8,8 @@ import cz.unicorn.tga.tractor.util.NoItemFoundByIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class LendService {
 
@@ -28,6 +30,11 @@ public class LendService {
         }
 
         return lendMapper.toLendDetail(lend);
+    }
+
+    public List<LendDetail> getAllLends() {
+
+        return lendMapper.toListOfLandDetail(lendDAO.findAll());
     }
 
 }

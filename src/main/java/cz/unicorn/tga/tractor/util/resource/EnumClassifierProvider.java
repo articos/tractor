@@ -15,7 +15,6 @@ public interface EnumClassifierProvider {
 	 * 
 	 * @param enumClass
 	 * @param locale
-	 *            TODO
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")

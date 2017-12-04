@@ -55,7 +55,6 @@ public class CarListController {
 	 * Find car by ID.
 	 *
 	 * @param carId
-	 *
 	 * @return JSON with one car
 	 */
 	@RequestMapping(value = "/find-car/{carId}", method = RequestMethod.GET)
@@ -63,6 +62,12 @@ public class CarListController {
 		return carService.getCarById(carId);
 	}
 
+	/**
+	 * Updating Slected Car by ID
+	 *
+	 * @param carUpdate
+	 * @return
+	 */
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	public CarDTO updateCarById(@RequestBody CarUpdate carUpdate) {
 		 return carService.updateCarById(carUpdate);
@@ -77,6 +82,14 @@ public class CarListController {
 
 		return result.toArray(new CarDTO[result.size()]);
 	}
+
+	@RequestMapping(value = "/cars-for-stk", method = RequestMethod.GET)
+	public CarDTO[] getAllCarsForSTk() {
+		final List<CarDTO> cars = carService.getAllCarsForStk();
+		return cars.toArray(new CarDTO[cars.size()]);
+	}
+
+
 
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {
