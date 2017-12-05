@@ -20,84 +20,67 @@ import cz.unicorn.tga.tractor.web.CommonConstants;
  * Controller
  *
  * @author John B.
- *
  */
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = CarListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CarListController {
-	static final String BASE_URL = CommonConstants.SLASH + "cars";
 
-	private final CarManagerService carService;
+    static final String BASE_URL = CommonConstants.SLASH + "cars";
+    private final CarManagerService carService;
 
-	/**
-	 * Constructor.
-	 */
-	@Autowired
-	public CarListController(CarManagerService carService) {
-		this.carService = carService;
-	}
+    @Autowired
+    public CarListController(CarManagerService carService) {
+        this.carService = carService;
+    }
 
+    /**
+     * Get all Cars from DB.
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public CarDTO[] getAllCars() {
+        final List<CarDTO> cars = carService.getAllCars();
+        return cars.toArray(new CarDTO[cars.size()]);
+    }
 
-	/**
-	 * Get all Cars from DB.
-	 *
-	 * @return JSON with all cars
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public CarDTO[] getAllCars() {
-		final List<CarDTO> cars = carService.getAllCars();
+    /**
+     * Find car by ID.
+     */
+    @RequestMapping(value = "/find-car/{carId}", method = RequestMethod.GET)
+    public CarDTO getCarById(@PathVariable("carId") Long carId) {
+        return carService.getCarById(carId);
+    }
 
-		return cars.toArray(new CarDTO[cars.size()]);
-	}
+    /**
+     * Update Selected Car by ID.
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public CarDTO updateCarById(@RequestBody CarUpdate carUpdate) {
+        return carService.updateCarById(carUpdate);
+    }
 
-	/**
-	 * Find car by ID.
-	 *
-	 * @param carId
-	 * @return JSON with one car
-	 */
-	@RequestMapping(value = "/find-car/{carId}", method = RequestMethod.GET)
-	public CarDTO getCarById(@PathVariable("carId") Long carId) {
-		return carService.getCarById(carId);
-	}
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public CarDTO[] findByFilter(CarFilter carFilter) {
 
-	/**
-	 * Update Selected Car by ID
-	 *
-	 * @param carUpdate
-	 * @return
-	 */
-	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public CarDTO updateCarById(@RequestBody CarUpdate carUpdate) {
-		 return carService.updateCarById(carUpdate);
-	}
+        // final CarFilter filter = new CarFilter(id, type, vin, state, priceFrom, priceTo, acquiredFrom, acquiredTo,
+        // lastTechnicalCheckFrom, lastTechnicalCheckTo);
+        final List<CarDTO> result = carService.findCarsByFilter(carFilter);
+        return result.toArray(new CarDTO[result.size()]);
+    }
 
-	@RequestMapping(value = "/find", method = RequestMethod.GET)
-	public CarDTO[] findByFilter( CarFilter carFilter) {
+    /**
+     * Search for cars, where STK is in two months needed or doesnt have STK
+     * and without CarState NEW nad DISABLED
+     */
+    @RequestMapping(value = "/cars-for-stk", method = RequestMethod.GET)
+    public CarDTO[] getAllCarsForSTk() {
+        final List<CarDTO> cars = carService.getAllCarsForStk();
+        return cars.toArray(new CarDTO[cars.size()]);
+    }
 
-		// final CarFilter filter = new CarFilter(id, type, vin, state, priceFrom, priceTo, acquiredFrom, acquiredTo,
-		// lastTechnicalCheckFrom, lastTechnicalCheckTo);
-		final List<CarDTO> result = carService.findCarsByFilter(carFilter);
-
-		return result.toArray(new CarDTO[result.size()]);
-	}
-
-	/**
-	 * Search for cars, where STK is in two months needed or doesnt have STK
-	 * and without CarState NEW nad DISABLED
-	 */
-	@RequestMapping(value = "/cars-for-stk", method = RequestMethod.GET)
-	public CarDTO[] getAllCarsForSTk() {
-		final List<CarDTO> cars = carService.getAllCarsForStk();
-		return cars.toArray(new CarDTO[cars.size()]);
-	}
-
-
-
-	@InitBinder
-	public void initBinder(final WebDataBinder binder) {
-		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-	}
+    @InitBinder
+    public void initBinder(final WebDataBinder binder) {
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+    }
 }

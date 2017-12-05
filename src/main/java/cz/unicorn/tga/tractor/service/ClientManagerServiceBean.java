@@ -32,4 +32,9 @@ public class ClientManagerServiceBean implements ClientManagerService {
         clientDAO.delete(clientId);
     }
 
+    @Override
+    public List<ClientDTO> getClientsByNameContains(String word) {
+        return dtoMapper.convertClients((clientDAO.findClientsByNameContainsOrSurnameContains(word, word)));
+    }
+
 }

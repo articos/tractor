@@ -35,5 +35,4 @@ public class Client {
 
     @Column(name="ceil_phone")
     private String ceilPhone;
-
 }

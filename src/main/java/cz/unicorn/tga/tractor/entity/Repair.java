@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 @Table(name = "car_repair")
 public class Repair {
 
-
     @Id
     @SequenceGenerator(name = "CAR_REPAIR_ID_GENERATOR", sequenceName = "HIBERNATE_SEQ")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CAR_REPAIR_ID_GENERATOR")
@@ -24,6 +23,4 @@ public class Repair {
 
     @Column(name = "repair_resolution")
     String repairResolution;
-
-
 }

@@ -6,10 +6,13 @@ import cz.unicorn.tga.tractor.entity.Client;
 import cz.unicorn.tga.tractor.entity.Lend;
 import cz.unicorn.tga.tractor.mapper.LendMapper;
 import cz.unicorn.tga.tractor.model.dto.LendDetail;
+import cz.unicorn.tga.tractor.model.dto.LendNewForm;
 import cz.unicorn.tga.tractor.util.NoItemFoundByIdException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -52,5 +55,24 @@ public class LendService {
         List<Lend> lends = lendDAO.findAllByClient(client);
         return lendMapper.toListOfLandDetail(lends);
     }
+
+//
+//    public void createNewLend(final LendNewForm lendNewForm) {
+//
+//        final Lend lend = new Lend();
+//
+//        try {
+//            setFieldFromDto(lendNewForm, lend);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        save(lend);
+//    }
+//
+//    private void setFieldFromDto(final LendNewForm lendNewForm, final Lend lend) throws ParseException {
+//
+//
+//    }
 
 }

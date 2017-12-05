@@ -7,8 +7,5 @@ import cz.unicorn.tga.tractor.model.dto.CarFilter;
 
 public interface CarFilterDAO extends GenericDAO<Car,Long> {
 
-	/** {@inheritDoc} */
-	@SuppressWarnings("unchecked")
 	List<Car> findByFilter(final CarFilter filter);
-
 }

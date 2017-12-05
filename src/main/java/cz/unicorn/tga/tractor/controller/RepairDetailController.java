@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * Controller for repair operations.
+ */
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = RepairDetailController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -21,17 +23,17 @@ public class RepairDetailController {
     private RepairService repairService;
 
     /**
-     * find Detail of Repair By Id of repair
-     * @param repairDetailId
-     * @return JSON with one RepairDetail
+     * Find detail of repair by ID of repair.
      */
-//    TODO zamenit za pridani opravy
-    @RequestMapping(value ="/{repairId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{repairId}", method = RequestMethod.GET)
     public RepairDetail getRepairDetail(@PathVariable("repairId") Long repairDetailId) {
         return repairService.getRepairDetailById(repairDetailId);
     }
 
-    @RequestMapping(value = "/find-repairs/{carId}",method = RequestMethod.GET)
+    /**
+     * Find repair details from each cars.
+     */
+    @RequestMapping(value = "/find-repairs/{carId}", method = RequestMethod.GET)
     public List<RepairDetail> getRepairDetailByCarId(@PathVariable("carId") Long carId) {
         return repairService.getRepairDetailByCarId(carId);
     }

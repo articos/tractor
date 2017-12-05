@@ -2,6 +2,7 @@ package cz.unicorn.tga.tractor.mapper;
 
 import cz.unicorn.tga.tractor.entity.Lend;
 import cz.unicorn.tga.tractor.model.dto.LendDetail;
+import cz.unicorn.tga.tractor.model.dto.LendNewForm;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -17,4 +18,6 @@ public interface LendMapper {
     LendDetail toLendDetail(final Lend lend);
 
     List<LendDetail> toListOfLandDetail(final List<Lend> lend);
+
+    Lend toLend(LendNewForm lendNewForm);
 }

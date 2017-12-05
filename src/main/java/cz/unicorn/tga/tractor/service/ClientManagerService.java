@@ -17,4 +17,6 @@ public interface ClientManagerService {
      * @param clientId
      */
     void deleteClientById(Long clientId);
+
+    List<ClientDTO> getClientsByNameContains(String word);
 }

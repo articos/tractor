@@ -10,7 +10,6 @@ import java.util.Date;
 @Table(name = "car_stk")
 public class Stk {
 
-
     @Id
     @SequenceGenerator(name = "STK_ID_GENERATOR", sequenceName = "HIBERNATE_SEQ")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STK_ID_GENERATOR")
@@ -26,5 +25,4 @@ public class Stk {
 
     @Column(name = "is_pass")
     boolean passed;
-
 }

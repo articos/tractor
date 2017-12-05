@@ -7,7 +7,6 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-
 @Mapper
 public interface RepairMapper {
 
@@ -17,7 +16,5 @@ public interface RepairMapper {
     @Mapping(target = "price", source = "repair.price")
     RepairDetail toRepairDetail(final Repair repair);
 
-    //TODO musim napsat testy moje mapovani listu
-     List<RepairDetail> convertToListOfRepairDetail (List<Repair> repair);
-
+    List<RepairDetail> convertToListOfRepairDetail(List<Repair> repair);
 }

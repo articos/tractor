@@ -1,5 +1,6 @@
 package cz.unicorn.tga.tractor.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import cz.unicorn.tga.tractor.model.enumeration.CarState;
 import cz.unicorn.tga.tractor.model.enumeration.CarsType;
 import lombok.Data;
