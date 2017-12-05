@@ -19,5 +19,5 @@ public interface LendMapper {
 
     List<LendDetail> toListOfLandDetail(final List<Lend> lend);
 
-    Lend toLend(LendNewForm lendNewForm);
+    Lend toLendFromLendNewForm(LendNewForm lendNewForm);
 }

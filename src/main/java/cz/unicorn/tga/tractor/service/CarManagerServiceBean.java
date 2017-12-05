@@ -19,10 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author DZCJS9F
@@ -67,9 +64,6 @@ public class CarManagerServiceBean implements CarManagerService {
      */
     private void setFieldFromDto(final CarNewForm carNewForm, final Car car) throws ParseException {
 
-
-        //TODO null validace + null validation
-
         Date date = new Date();
         if ( (carNewForm.getPrice() == null) || (carNewForm.getVin()==null) ){
             return;
@@ -110,8 +104,11 @@ public class CarManagerServiceBean implements CarManagerService {
      */
     @Override
     public List<CarDTO> getAllCars() {
+        List listToSort;
+        listToSort = dtoMapper.convert(carDAO.findAll());
 
-        return dtoMapper.convert(carDAO.findAll());
+        Collections.sort(listToSort, Comparator.comparing(CarDTO::getCarState).reversed());
+        return listToSort;
     }
 
     /**

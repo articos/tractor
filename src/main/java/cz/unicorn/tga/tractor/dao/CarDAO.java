@@ -11,7 +11,6 @@ import java.util.List;
 public interface CarDAO extends JpaRepository<Car,Long> {
 
 
-
     @Query("SELECT c FROM Car c WHERE c.carState not in ( 'DISABLED', 'NEW')" )
     List<Car> findCarsForStk();
 

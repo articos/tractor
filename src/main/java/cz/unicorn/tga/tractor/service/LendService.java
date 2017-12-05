@@ -56,23 +56,16 @@ public class LendService {
         return lendMapper.toListOfLandDetail(lends);
     }
 
-//
-//    public void createNewLend(final LendNewForm lendNewForm) {
-//
-//        final Lend lend = new Lend();
-//
-//        try {
-//            setFieldFromDto(lendNewForm, lend);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//        save(lend);
-//    }
-//
-//    private void setFieldFromDto(final LendNewForm lendNewForm, final Lend lend) throws ParseException {
-//
-//
-//    }
 
+    public void createNewLend(final LendNewForm lendNewForm) {
+
+        Lend lend ;
+        Car car = new Car();
+        Client client = new Client();
+        car.setId(lendNewForm.getCarId());
+        client.setId(lendNewForm.getId());
+
+        lend = lendMapper.toLendFromLendNewForm(lendNewForm);
+        lendDAO.save(lend);
+    }
 }

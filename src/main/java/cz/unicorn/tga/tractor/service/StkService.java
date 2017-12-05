@@ -48,7 +48,7 @@ public class StkService {
                 cal.getTime()
         );
 
-        return list;
+        return stkDAO.findStkAndCar();
     }
 
 }

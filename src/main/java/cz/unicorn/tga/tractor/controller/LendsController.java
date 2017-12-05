@@ -59,12 +59,9 @@ public class LendsController {
     }
 
     //TODO ADD LEND
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/add-lend", method = RequestMethod.POST)
     public void addNewLend(@RequestBody final LendNewForm lendNewForm) {
-
-        //  lendService.createNewLend(lendNewForm);
-
-        return;
+        lendService.createNewLend(lendNewForm);
     }
 
 }
