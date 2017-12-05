@@ -841,7 +841,7 @@ Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('156','73',PARSEDATETIME
 Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('157','19',PARSEDATETIME('23.04.2016','dd.MM.yyyy'),'Y');
 Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('158','58',PARSEDATETIME('08.06.2012','dd.MM.yyyy'),'Y');
 Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('159','42',PARSEDATETIME('31.03.2000','dd.MM.yyyy'),'N');
-Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('160','44',PARSEDATETIME('03.10.2006','dd.MM.yyyy'),'Y');
+Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('160','44',PARSEDATETIME('03.10.2017','dd.MM.yyyy'),'Y');
 Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('161','79',PARSEDATETIME('13.09.2012','dd.MM.yyyy'),'Y');
 Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('162','55',PARSEDATETIME('15.04.1998','dd.MM.yyyy'),'Y');
 Insert into CAR_STK (ID,CAR,CHECK_DATE,IS_PASS) values ('163','77',PARSEDATETIME('14.05.2008','dd.MM.yyyy'),'Y');

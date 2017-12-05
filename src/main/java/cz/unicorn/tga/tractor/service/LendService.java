@@ -1,6 +1,8 @@
 package cz.unicorn.tga.tractor.service;
 
 import cz.unicorn.tga.tractor.dao.LendDAO;
+import cz.unicorn.tga.tractor.entity.Car;
+import cz.unicorn.tga.tractor.entity.Client;
 import cz.unicorn.tga.tractor.entity.Lend;
 import cz.unicorn.tga.tractor.mapper.LendMapper;
 import cz.unicorn.tga.tractor.model.dto.LendDetail;
@@ -35,6 +37,20 @@ public class LendService {
     public List<LendDetail> getAllLends() {
 
         return lendMapper.toListOfLandDetail(lendDAO.findAll());
+    }
+
+    public List<LendDetail> getLendDetailByCarId(Long carId) throws NoItemFoundByIdException {
+        Car car = new Car();
+        car.setId(carId);
+        List<Lend> lends = lendDAO.findAllByCar(car);
+        return lendMapper.toListOfLandDetail(lends);
+    }
+
+    public List<LendDetail> getLendDetailByClientId(Long clientId) throws NoItemFoundByIdException {
+        Client client = new Client();
+        client.setId(clientId);
+        List<Lend> lends = lendDAO.findAllByClient(client);
+        return lendMapper.toListOfLandDetail(lends);
     }
 
 }

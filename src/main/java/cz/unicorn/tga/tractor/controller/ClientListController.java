@@ -22,7 +22,7 @@ public class ClientListController {
     private ClientManagerService clientService;
 
     @RequestMapping(method = RequestMethod.GET)
-//    FIXME nikdo nepotrebuje radeji pridani/edit
+
     public ClientDTO[] getAllClients() {
         final List<ClientDTO> clients = clientService.getAllClients();
 

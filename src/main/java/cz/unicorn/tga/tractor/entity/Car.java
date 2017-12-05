@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * @author DZCJS9F
@@ -39,6 +40,9 @@ public class Car {
     private Date dateOfLastTechnicalCheck;
 
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "car")
+    private Set<Stk> stks;
 
 
 }

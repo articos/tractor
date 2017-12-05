@@ -25,7 +25,7 @@ public class RepairDetailController {
      * @param repairDetailId
      * @return JSON with one RepairDetail
      */
-//    FIXME zamenit za pridani opravy
+//    TODO zamenit za pridani opravy
     @RequestMapping(value ="/{repairId}", method = RequestMethod.GET)
     public RepairDetail getRepairDetail(@PathVariable("repairId") Long repairDetailId) {
         return repairService.getRepairDetailById(repairDetailId);
